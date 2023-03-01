@@ -1,12 +1,12 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Store } from './../Store';
-import CheckoutSteps from '../components/CheckoutSteps';
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Store } from "./../Store";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 export default function ShippingAddressScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -15,24 +15,24 @@ export default function ShippingAddressScreen() {
     cart: { shippingAddress },
   } = state;
   const navigate = useNavigate();
-  const [fullName, setFullName] = useState(shippingAddress.fullName || '');
-  const [address, setAddress] = useState(shippingAddress.address || '');
-  const [city, setCity] = useState(shippingAddress.city || '');
+  const [fullName, setFullName] = useState(shippingAddress.fullName || "");
+  const [address, setAddress] = useState(shippingAddress.address || "");
+  const [city, setCity] = useState(shippingAddress.city || "");
   const [postalCode, setPostalCode] = useState(
-    shippingAddress.postalCode || ''
+    shippingAddress.postalCode || ""
   );
-  const [country, setCountry] = useState(shippingAddress.country || '');
+  const [country, setCountry] = useState(shippingAddress.country || "");
 
   useEffect(() => {
     if (!userInfo) {
-      navigate('/signin?redirect=/shipping');
+      navigate("/signin?redirect=/shipping");
     }
   }, [userInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     ctxDispatch({
-      type: 'SAVE_SHIPPING_ADDRESS',
+      type: "SAVE_SHIPPING_ADDRESS",
       payload: {
         fullName,
         address,
@@ -42,7 +42,7 @@ export default function ShippingAddressScreen() {
       },
     });
     localStorage.setItem(
-      'shippingAddress',
+      "shippingAddress",
       JSON.stringify({
         fullName,
         address,
@@ -51,7 +51,7 @@ export default function ShippingAddressScreen() {
         country,
       })
     );
-    navigate('/payment');
+    navigate("/payment");
   };
 
   return (
@@ -60,10 +60,10 @@ export default function ShippingAddressScreen() {
         <title>ShippingAddressScreen</title>
       </Helmet>
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <Col className="Container small-Container" md={{ span: 6, offset: 3 }}>
-        <h1 className="my-3">Shipping Address</h1>
+      <Col className='Container small-Container' md={{ span: 6, offset: 3 }}>
+        <h1 className='my-3'>Shipping Address</h1>
         <Form onSubmit={submitHandler}>
-          <Form.Group className="mb-3" controlId="fullName">
+          <Form.Group className='mb-3' controlId='fullName'>
             <Form.Label>Full name</Form.Label>
             <Form.Control
               value={fullName}
@@ -71,7 +71,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="address">
+          <Form.Group className='mb-3' controlId='address'>
             <Form.Label>Address</Form.Label>
             <Form.Control
               value={address}
@@ -79,7 +79,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="city">
+          <Form.Group className='mb-3' controlId='city'>
             <Form.Label>City</Form.Label>
             <Form.Control
               value={city}
@@ -87,7 +87,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="postalCode">
+          <Form.Group className='mb-3' controlId='postalCode'>
             <Form.Label>Postal Code</Form.Label>
             <Form.Control
               value={postalCode}
@@ -95,7 +95,7 @@ export default function ShippingAddressScreen() {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="country">
+          <Form.Group className='mb-3' controlId='country'>
             <Form.Label>Country</Form.Label>
             <Form.Control
               value={country}
@@ -105,8 +105,12 @@ export default function ShippingAddressScreen() {
           </Form.Group>
 
           <Form.Group>
-            <div className="mb-3">
-              <Button variant="primary" type="submit">
+            <div className='mb-3'>
+              <Button
+                className='fui-button-shiny-2'
+                variant='primary'
+                type='submit'
+              >
                 Countinue
               </Button>
             </div>

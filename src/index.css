@@ -1,12 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Prata", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
 }
-
+/* header {
+  padding: 0;
+}
+ */
 .site-container {
   min-height: 100vh;
 }
@@ -21,7 +25,7 @@ main {
   justify-content: center;
 }
 .btn-primary {
-  background-color: #ffc000;
+  background-color: #fff;
   color: black;
 }
 .item {
@@ -45,60 +49,66 @@ main {
 }
 
 .img-thumbnail {
-  height: 80px;
+  height: 100%;
 }
 
 .small-container {
   min-width: 600px;
+}
+.navbar-expand {
+  height: 90px;
 }
 .nav-band {
   display: flex;
   justify-content: center;
   align-items: baseline;
   margin-top: 1%;
-  width: fit-content;
 }
 .nav-clothes {
   color: #fff;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 50;
+  margin-left: 5px;
+}
+
+.nav-link {
+  color: #fff;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 50;
+  margin-left: 5px;
 }
 .Navbar-overlay {
-  height: 120px;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     360deg,
-    #0e0e0e 0%,
-    rgb(0 0 0 / 37%) 80%,
-    rgb(255 255 255 / 0%) 100%
+    #000000 0%,
+    rgb(0 0 0 / 37%) 100%,
+    rgb(0 0 0 / 0%) 100%
   );
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
 }
 
-.Navbar {
-  height: 120px;
-  background-image: url(../public/images/img-nav.jpg);
-  width: 100%;
-  background-size: 20%;
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: end;
 }
 
 .nav-men {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Prata", serif;
   color: #fff;
   align-items: end;
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 500;
   position: relative;
   line-height: 2.5rem;
-}
-.nav-men-item {
-  position: absolute;
-  color: #fff;
-  align-items: center;
-  font-size: 1.2rem;
-  font-weight: 50;
-  display: block;
 }
 
 .checkout-steps > div {
@@ -107,142 +117,70 @@ main {
 }
 
 .checkout-steps > div.active {
-  border-bottom: 0.2rem solid #ffc000;
-  color: #ffc000;
+  border-bottom: 0.2rem solid #07bc0c;
+  color: #07bc0c;
 }
 
-.fui-button-shiny-3 {
-  background: rgba(0, 0, 0, 0);
-  color: #1dc071;
+/* button */
+
+.fui-button-shiny-2 {
   padding: 16px 32px;
-  display: inline-block;
-  border: 1px solid #1dc071;
+  border: 2px solid #333;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
   border-radius: 8px;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
+  display: inline-block;
   overflow: hidden;
   position: relative;
   text-transform: capitalize;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
-.fui-button-shiny-3::before {
+.fui-button-shiny-2::before {
   content: "";
-  display: block;
   position: absolute;
-  background: rgba(255, 255, 255, 0.5);
-  width: 60px;
-  height: 100%;
-  left: 0;
+  left: -100%;
   top: 0;
-  opacity: 0.5s;
-  filter: blur(30px);
-  transform: translateX(-130px) skewX(-15deg);
-}
-.fui-button-shiny-3::after {
-  content: "";
-  display: block;
-  position: absolute;
-  background: rgba(255, 255, 255, 0);
-  width: 30px;
+  width: 100%;
   height: 100%;
-  left: 30px;
-  top: 0;
-  opacity: 0;
-  filter: blur(30px);
-  transform: translateX(-100px) skewX(-15deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+  transition: all linear 0.5s;
 }
-.fui-button-shiny-3:hover {
-  background-color: #1dc071;
+.fui-button-shiny-2:hover {
+  background-color: #888;
   color: #fff;
 }
-.fui-button-shiny-3:hover::before {
-  transform: translateX(300px) skewX(-15deg);
-  opacity: 0.6;
-  transition: all linear 0.5s;
-}
-.fui-button-shiny-3:hover::after {
-  transform: translateX(300px) skewX(-15deg);
-  opacity: 0.6;
-  transition: all linear 0.5s;
+.fui-button-shiny-2:hover::before {
+  left: 100%;
 }
 
-.fui-footer-3 {
-  width: 100%;
-  padding: 40px 32px 20px;
-  background-color: #22242a;
-  color: #f1f5f9;
+.btn:hover {
+  border-color: #000000;
 }
-.fui-footer-3 .footer-category-wrap {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
+
+/* img */
+.bt-card-ui-3 {
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  color: #33302d;
 }
-.fui-footer-3 .footer-category:first-child {
-  width: 320px;
-}
-.fui-footer-3 .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.fui-footer-3 .footer-logo img {
-  height: 40px;
-}
-.fui-footer-3 .footer-desc {
-  margin-top: 24px;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #f1f5f9;
-}
-.fui-footer-3 .copy-right {
-  margin-top: 24px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-}
-.fui-footer-3 .social-list {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.fui-footer-3 .social-link {
+.bt-card-ui-3:hover {
+  transform: scale(1.1);
+
   transition: linear 0.25s;
 }
-.fui-footer-3 .social-link:hover {
-  opacity: 0.5;
+.silder-h {
+  height: 70vh;
 }
-.fui-footer-3 .footer-heading {
-  margin-bottom: 14px;
-  font-weight: 700;
-}
-.fui-footer-3 .footer-category-item {
-  margin-bottom: 32px;
-}
-.fui-footer-3 .footer-category-item:last-child {
-  margin-bottom: 0;
-}
-.fui-footer-3 .footer-link-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.fui-footer-3 .footer-link {
-  transition: linear 0.2s;
-}
-.fui-footer-3 .footer-link:hover {
-  color: #1dc071;
-}
-.fui-footer-3 .footer-bottom {
-  margin-top: 32px;
-}
-.fui-footer-3 .footer-bottom-list {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-.fui-footer-3 .footer-bottom-link {
-  font-size: 14px;
-  transition: linear 0.2s;
-}
-.fui-footer-3 .footer-bottom-link:hover {
-  color: #1dc071;
-}
+
+/* img */

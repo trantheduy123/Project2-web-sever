@@ -6,13 +6,13 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
-import Button from "react-bootstrap/esm/Button";
 import Rating from "./../components/Rating";
 import { Helmet } from "react-helmet-async";
 import MessageBox from "./../components/MessageBox";
 import LoadingBox from "./../components/LoadingBox";
 import { getError } from "./../utils";
 import { Store } from "./../Store";
+import Addbutton from "../components/AddButton";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -79,36 +79,23 @@ function ProductScreen() {
       </Helmet>
       <Row>
         <Col md={6}>
-          <Card>
-            <Card.Body>
-              <img className='img-large' src={item.image} alt={item.name}></img>
-            </Card.Body>
-          </Card>
+          <img className='img-large' src={item.image} alt={item.name}></img>
         </Col>
         <Col md={3}>
-          <Card>
-            <Card.Body>
-              <ListGroup variant='flush'>
-                <ListGroup.Item>
-                  <Helmet>
-                    <title>{item.name}</title>
-                  </Helmet>
-                </ListGroup.Item>
-
-                <ListGroup.Item variant='flush'>
-                  <Row>
-                    <Col>Name:</Col>
-                    <Col>${item.name}</Col>
-                  </Row>
-                  <Rating
-                    rating={item.rating}
-                    numReviews={item.numReviews}
-                  ></Rating>
-                </ListGroup.Item>
-              </ListGroup>
-            </Card.Body>
-          </Card>
-          <ListGroup>Price : ${item.price}</ListGroup>
+          <ListGroup variant='flush'>
+            <ListGroup.Item>
+              <Helmet>
+                <title>{item.name}</title>
+              </Helmet>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Rating
+                rating={item.rating}
+                NumReviews={item.NumReviews}
+              ></Rating>
+            </ListGroup.Item>
+            <ListGroup>Price : ${item.price}</ListGroup>
+          </ListGroup>
         </Col>
         <Col md={3}>
           <Card>
@@ -136,13 +123,13 @@ function ProductScreen() {
                 {item.countInStock > 0 && (
                   <ListGroup.Item>
                     <div className='d-grid'>
-                      <Button
+                      <Addbutton
                         className='fui-button-shiny-2'
                         onClick={addToCartHandler}
                         variant='primary'
                       >
                         Add to Cart
-                      </Button>
+                      </Addbutton>
                     </div>
                   </ListGroup.Item>
                 )}
